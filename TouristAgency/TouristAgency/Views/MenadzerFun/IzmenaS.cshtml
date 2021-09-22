@@ -1,0 +1,99 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <form action="~/MenadzerFun/IzmeniS" method="post">
+        <div>
+            @ViewBag.Message
+        </div>
+        <h1>Izmena smestaja</h1><br />
+
+        <label for="naziv">Naziv:</label><br />
+        <input type="text" name="naziv" value="@ViewBag.smestaj.Naziv" /><br />
+
+        <label for="brojZvezdica">Broj zvezdica</label><br />
+        <input type="number" name="brojZvezdica" value="@ViewBag.smestaj.BrojZvezdica" /><br />
+
+        <label>Tip smestaja:</label>
+        <select name="tipSmestaja">
+            <option value=""></option>
+            <option value="HOTEL">HOTEL</option>
+            <option value="MOTEL">MOTEL</option>
+            <option value="VILA">VILA</option>
+        </select>
+        <br />
+
+        <label>BAZEN:</label>
+        <select name="bazen">
+            < @if (ViewBag.smestaj.Bazen == true)
+            {
+                <option value="true" selected>DA</option>
+                <option value="false">NE</option>
+            }
+            else
+            {
+                <option value="false" selected>NE</option>
+                <option value="true">DA</option>
+            }
+        </select>
+        <br />
+
+        <label>SPA CENTAR:</label>
+        <select name="spaCentar">
+            @if (ViewBag.smestaj.SpaCentar == true)
+            {
+                <option value="true" selected>DA</option>
+                <option value="false">NE</option>
+            }
+            else
+            {
+                <option value="false" selected>NE</option>
+                <option value="true">DA</option>
+            }
+        </select>
+        <br />
+
+        <label>Za osobe sa invaliditetom:</label>
+        <select name="saInv">
+            @if (ViewBag.smestaj.ZaOsobeInv == true)
+            {
+                <option value="true" selected>DA</option>
+                <option value="false">NE</option>
+            }
+            else
+            {
+                <option value="false" selected>NE</option>
+                <option value="true">DA</option>
+            }
+        </select>
+        <br />
+
+        <label>WI FI:</label>
+        <select name="wiFi">
+            @if (ViewBag.smestaj.WiFi == true)
+            {
+                <option value="true" selected>DA</option>
+                <option value="false">NE</option>
+            }
+            else
+            {
+                <option value="false" selected>NE</option>
+                <option value="true">DA</option>
+            }
+        </select>
+        <br />
+        <input type="text" name="id_s" value="@ViewBag.smestaj.Id" hidden />
+        <input type="submit" value="Modifikuj" />
+
+    </form>
+    <br />
+    <a href="~/MenadzerFun/Smestaji">Nazad</a>
+</body>
+</html>

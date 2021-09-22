@@ -1,0 +1,208 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <br />
+        <form action="~/MenadzerFun/DodavanjeSmestaja" method="post">
+            <input type="submit" value="Dodaj novi" />
+        </form>
+        <br />
+        <h3>Svi smestaji:</h3>
+        <table class="table">
+            <tr>
+                <th>
+                    TipSmestaja
+                </th>
+                <th>
+                    Naziv
+                </th>
+                <th>
+                    BrojZvezdica
+                </th>
+                <th>
+                    Bazen
+                </th>
+                <th>
+                    SpaCentar
+                </th>
+                <th>
+                    Za osobe sa invaliditetom
+                </th>
+                <th>
+                    WiFI
+                </th>
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+            </tr>
+            @foreach (var a in ViewBag.Smestaji)
+            {
+            <tr>
+                <td>
+                    @a.TipSmestaja
+                </td>
+                <td>
+                    @a.Naziv
+                </td>
+                <td>
+                    @a.BrojZvezdica
+                </td>
+                @if (a.Bazen == false)
+                {
+                    <td>
+                        NE
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        DA
+                    </td>
+
+                }
+                @if (a.SpaCentar == false)
+                {
+                    <td>
+                        NE
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        DA
+                    </td>
+
+                }
+                @if (a.ZaOsobeInv == false)
+                {
+                    <td>
+                        NE
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        DA
+                    </td>
+
+                }
+                @if (a.WiFi == false)
+                {
+                    <td>
+                        NE
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        DA
+                    </td>
+
+                }
+                <td>
+                    <form action="/MenadzerFun/IzmenaS" method="post">
+                        <input type="text" name="id" value="@a.Id" hidden />
+                        <input type="submit" value="Izmena" />
+                    </form>
+                </td>
+                <td>
+                    <form action="/MenadzerFun/SmestajneJedinice" method="post">
+                        @*<input type="text" name="id" value="@a.Id" hidden />*@
+                        <input type="submit" value="SmestajneJedinice" />
+                    </form>
+                </td>
+                <td>
+                    <form action="/MenadzerFun/ObrisiS" method="post">
+                        <input type="text" name="id_s" value="@a.Id" hidden />
+                        <input type="submit" value="Obrisi" />
+                    </form>
+                </td>
+            </tr>
+            }
+        </table>
+        <br />
+        <h4>Sortiranja:</h4>
+        <br />
+        <form action="~/MenadzerFun/SortirajNazivSUp">
+            <input type="submit" value="Naziv UP" />
+        </form>
+        <br />
+        <form action="~/MenadzerFun/SortirajNazivSDown">
+            <input type="submit" value="Naziv DOWN" />
+        </form>
+        <br />
+
+        <h4>Pretraga:</h4>
+        <form action="/MenadzerFun/PretragaS">
+            @{
+                <div style="color : red">
+                    @ViewBag.Message
+                </div>
+            }
+            <label>Pretraga po tipu :</label>
+            <select name="tip">
+                <option value=""></option>
+                <option value="HOTEL">HOTEL</option>
+                <option value="MOTEL">MOTEL</option>
+                <option value="VILA">VILA</option>
+            </select>
+            <br />
+            <label>Pretraga po nazivu:</label>
+            <input type="text" name="naziv" />
+            <br />
+            <label>Postojanje bazena :</label>
+            <select name="bazen">
+                <option value=""></option>
+                <option value="true">DA</option>
+                <option value="false">NE</option>
+            </select>
+            <br />
+            <label>Postojanje spa centra :</label>
+            <select name="spaCentar">
+                <option value=""></option>
+                <option value="true">DA</option>
+                <option value="false">NE</option>
+            </select>
+            <br />
+            <label>Prilagođeno za osobe sa invaliditetom:</label>
+            <select name="saInv">
+                <option value=""></option>
+                <option value="true">DA</option>
+                <option value="false">NE</option>
+            </select>
+            <br />
+            <label>Postoji wifi:</label>
+            <select name="wiFi">
+                <option value=""></option>
+                <option value="true">DA</option>
+                <option value="false">NE</option>
+            </select>
+            <br />
+            <input type="submit" value="Pretrazi" />
+
+        </form>
+        <br />
+        <h4>Prikazi opet celu stranicu:</h4>
+        <form action="/MenadzerFun/Smestaji">
+            <input type="submit" value="Prikazi opet" />
+        </form>
+
+        <br />
+        <a href="~/Korisnici/Menadzer">Nazad</a>
+    </div>
+</body>
+</html>

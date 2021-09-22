@@ -1,0 +1,2 @@
+1|Maldivii|POLUPANSION|AUTOBUS|REGIJA|23/09/2021|21/09/2021|Ulica 2,Novi Sad,21000|40.245|18.866|00:00|70|Opis3|Program3|slika5.jpg|0|False|menadzer|0|turista123|ODOBREN|idemoooo|4
+3|Egipat|POLUPANSION|AVION|DRZAVA|18/09/2021|16/09/2021|Ulica 1,Novi Sad,21000|43.245|15.866|00:00|50|Opis1|Program1|slika2.jpg|0|False|menadzer|1|turista123|ODOBREN|probaEgipat|2

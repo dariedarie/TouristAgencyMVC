@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div style="color : red">
+        @ViewBag.Message
+    </div>
+    <br />
+    <br />
+
+    <form action="/TuristaFun/DodajComm" method="post">
+        <table>
+            <tr>
+                <td>
+                    Tekst komentara:
+                </td>
+                <td>
+                    <input type="text" name="tekst" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Ocena:
+                </td>
+                <td>
+                    <input type="number" name="a_ocena" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <br />
+                    <input type="text" name="id_aran" value="@ViewBag.id_aran" hidden />
+                    <input type="submit" value="Potvrdi" />
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+
+    <br />
+    <br />
+    <a href="/TuristaFun/Komentari">Back</a>
+
+</body>
+
+
+</html>

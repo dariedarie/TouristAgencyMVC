@@ -1,0 +1,83 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Moj profil:</h2>
+
+<table class="table-condensed">
+    <tr>
+        <td>Korisnicko ime:</td>
+        <td>
+            @ViewBag.Turista.KorisnickoIme
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Ime:
+        </td>
+        <td>
+            @ViewBag.Turista.Ime
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Prezime:
+        </td>
+        <td>
+            @ViewBag.Turista.Prezime
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Lozinka:
+        </td>
+        <td>
+            @ViewBag.Turista.Lozinka
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Pol:
+        </td>
+        <td>
+            @ViewBag.Turista.Pol
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Email:
+        </td>
+        <td>
+            @ViewBag.Turista.Email
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Datum rodjenja:
+        </td>
+        <td>
+            @ViewBag.Turista.DatumRodjenja.ToString("MM/dd/yyyy")
+        </td>
+    </tr>
+</table>
+<br />
+<form action="/Korisnici/IzmenaTuriste">
+    <input type="text" name="korisnickoIme" value="@ViewBag.Turista.KorisnickoIme" hidden />
+    <input type="submit" value="Izmeni profil" />
+</form>
+<br />
+<form action="~/Korisnici/TuristaRezervacije" method="post">
+    <input type="submit" value="Napravi rezervaciju" />
+</form>
+<br />
+<form action="~/Korisnici/PregledRezervacija" method="post">
+    <input type="submit" value="Pregled rezervacija" />
+</form>
+<br />
+<form action="~/Korisnici/OtkazivanjeRez" method="post">
+    <input type="submit" value="Otkazivanje rezervacije" />
+</form>
+<br />
+<form action="~/Korisnici/NaKomentare" method="post">
+    <input type="submit" value="Komentarisi" />
+</form>

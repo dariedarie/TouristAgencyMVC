@@ -1,0 +1,129 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <br />
+    <form action="~/MenadzerFun/DodavanjeNoveSJ" method="post">
+        <input type="submit" value="Dodaj novu" />
+    </form>
+    <br />
+    <h3>Sve smestajne jedinice:</h3>
+    <table class="table">
+        <tr>
+            <th>
+                Dozvoljeno gostiju
+            </th>
+            <th>
+                Kucnji ljubimci
+            </th>
+            <th>
+                Cena
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+        </tr>
+        @foreach (var a in ViewBag.SmestajJ)
+        {
+        <tr>
+            <td>
+                @a.DozvoljenoGostiju
+            </td>
+            @if (a.KucniLjubimci == false)
+            {
+                <td>
+                    NE
+                </td>
+            }
+            else
+            {
+                <td>
+                    DA
+                </td>
+
+            }
+            <td>
+                @a.Cena
+            </td>
+            <td>
+                <form action="/MenadzerFun/IzmenaSJ" method="post">
+                    <input type="text" name="id" value="@a.Id" hidden />
+                    <input type="submit" value="Izmena" />
+                </form>
+            </td>
+            
+            <td>
+                    <form action="/MenadzerFun/ObrisiSJ">
+                        <input type="text" name="id_obrisi" value="@a.Id" hidden />
+                        <input type="submit" value="Obrisi" />
+                    </form>
+           </td>
+        </tr>
+        }
+    </table>
+    <br />
+    <h4>Sortiranja:</h4>
+    <br />
+    <form action="~/MenadzerFun/SortirajBrGostijuUp">
+        <input type="submit" value="Broj gostiju UP" />
+    </form>
+    <br />
+    <form action="~/MenadzerFun/SortirajBrGostijuDown">
+        <input type="submit" value="Broj gostiju DOWN" />
+    </form>
+    <br />
+    <form action="~/MenadzerFun/SortirajCenaUp">
+        <input type="submit" value="Sort cena  UP" />
+    </form>
+    <br />
+    <form action="~/MenadzerFun/SortirajCenaDown">
+        <input type="submit" value="Sort cena DOWN" />
+    </form>
+    <br />
+    <h4>Smestajne jedinice pretraga:</h4>
+    <form action="/MenadzerFun/PretragaSJ">
+        @{
+            <div style="color : red">
+                @ViewBag.Message
+            </div>
+        }
+        <label>Pretraga po dozvoljenom broju gostiju:</label>
+        <label>Donja granica:</label>
+        <input type="number" name="donjagranicaP" />
+        <label>Gornja granica:</label>
+        <input type="number" name="gornjagranicaP" />
+        <br />
+        <label>Dozvoljeno kucni ljubimci :</label>
+        <select name="kucniLjubimci">
+            <option value=""></option>
+            <option value="true">DA</option>
+            <option value="false">NE</option>
+        </select>
+        <br />
+        <label>Cena do:</label>
+        <input type="text" name="cena" />
+        <br />
+        <input type="submit" value="Pretrazi" />
+
+    </form>
+    <br />
+    <h4>Prikazi opet celu stranicu:</h4>
+    <form action="/MenadzerFun/SmestajneJedinice">
+        <input type="submit" value="Prikazi opet" />
+    </form>
+
+    <br />
+    <a href="~/Korisnici/Menadzer">Nazad</a>
+
+</body>
+</html>

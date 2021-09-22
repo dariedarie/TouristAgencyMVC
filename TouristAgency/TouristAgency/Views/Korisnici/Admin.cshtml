@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Moj profil:</h2>
+
+<table class="table-condensed">
+    <tr>
+        <td>Korisnicko ime:</td>
+        <td>
+            @ViewBag.Admin.KorisnickoIme
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Ime:
+        </td>
+        <td>
+            @ViewBag.Admin.Ime
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Prezime:
+        </td>
+        <td>
+            @ViewBag.Admin.Prezime
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Lozinka:
+        </td>
+        <td>
+            @ViewBag.Admin.Lozinka
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Pol:
+        </td>
+        <td>
+            @ViewBag.Admin.Pol
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Email:
+        </td>
+        <td>
+            @ViewBag.Admin.Email
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Datum rodjenja:
+        </td>
+        <td>
+            @ViewBag.Admin.DatumRodjenja.ToString("MM/dd/yyyy")
+        </td>
+    </tr>
+</table>
+<br />
+<form action="/Korisnici/IzmenaAdmina">
+    <input type="text" name="korisnickoIme" value="@ViewBag.Admin.KorisnickoIme" hidden />
+    <input type="submit" value="Izmeni profil" />
+</form>
+<br />
+<form action="~/Korisnici/AdminNewMen" method="post">
+    <input type="submit" value="Registruj novog menadzera" />
+</form>
+<br />
+<form action="~/Korisnici/AdminSviKorisnici" method="post">
+    <input type="submit" value="Prikazi sve korisnike" />
+</form>

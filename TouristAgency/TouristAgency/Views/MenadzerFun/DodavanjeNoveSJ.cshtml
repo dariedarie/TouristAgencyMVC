@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <form action="~/MenadzerFun/DodajNovuSJ" method="post">
+        <div>
+            @ViewBag.Message
+        </div>
+        <h1>Kreiranje smestajne jedinice</h1><br />
+        <label for="dozvoljenoGostiju">Dozvoljeno gostiju</label><br />
+        <input type="number" name="dozvoljenoGostiju" /><br />
+
+        <label>Dozvoljeni boravak kucnih ljubimaca:</label>
+        <select name="kucniLjubimci">
+            <option value=""></option>
+            <option value="true">DA</option>
+            <option value="false">NE</option>
+        </select>
+        <br />
+
+        <label for="cena">Cena za celu smestajnu jedinicu</label><br />
+        <input type="text" name="cena" /><br />
+
+        <input type="submit" value="NovaSJ" />
+
+    </form>
+    <br />
+    <form action="~/MenadzerFun/SmestajneJedinice" method="post">
+        <input type="submit" value="Nazad" />
+    </form>
+    
+</body>
+</html>

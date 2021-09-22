@@ -1,0 +1,107 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <br />
+    <br />
+    <h3>Sve smestajne jedinice:</h3>
+    <table class="table">
+        <tr>
+            <th>
+                Dozvoljeno gostiju
+            </th>
+            <th>
+                Kucnji ljubimci
+            </th>
+            <th>
+                Cena
+            </th>
+        </tr>
+        @foreach (var a in ViewBag.SmestajJ)
+        {
+            <tr>
+                <td>
+                    @a.DozvoljenoGostiju
+                </td>
+                @if (a.KucniLjubimci == false)
+                {
+                    <td>
+                        NE
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        DA
+                    </td>
+
+                }
+                <td>
+                    @a.Cena
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+    <h4>Sortiranja:</h4>
+    <br />
+    <form action="~/Home/SortirajBrGostijuUp">
+        <input type="submit" value="Broj gostiju UP" />
+    </form>
+    <br />
+    <form action="~/Home/SortirajBrGostijuDown">
+        <input type="submit" value="Broj gostiju DOWN" />
+    </form>
+    <br />
+    <form action="~/Home/SortirajCenaUp">
+        <input type="submit" value="Sort cena  UP" />
+    </form>
+    <br />
+    <form action="~/Home/SortirajCenaDown">
+        <input type="submit" value="Sort cena DOWN" />
+    </form>
+    <br />
+    <h4>Smestajne jedinice pretraga:</h4>
+    <form action="/Home/PretragaSJ">
+        @{
+            <div style="color : red">
+                @ViewBag.Message
+            </div>
+        }
+        <label>Pretraga po dozvoljenom broju gostiju:</label>
+        <label>Donja granica:</label>
+        <input type="number" name="donjagranicaP" />
+        <label>Gornja granica:</label>
+        <input type="number" name="gornjagranicaP" />
+        <br />
+        <label>Dozvoljeno kucni ljubimci :</label>
+        <select name="kucniLjubimci">
+            <option value=""></option>
+            <option value="true">DA</option>
+            <option value="false">NE</option>
+        </select>
+        <br />
+        <label>Cena do:</label>
+        <input type="text" name="cena" />
+        <br />
+        <input type="submit" value="Pretrazi" />
+
+    </form>
+    <br />
+    <h4>Prikazi opet celu stranicu:</h4>
+    <form action="/Home/SmestajneJediniceNeReg">
+        <input type="submit" value="Prikazi opet" />
+    </form>
+
+    <br />
+    <a href="~/Home/Index">Nazad</a>
+
+</body>
+</html>

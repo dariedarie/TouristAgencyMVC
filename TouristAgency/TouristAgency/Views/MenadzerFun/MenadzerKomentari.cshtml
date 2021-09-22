@@ -1,0 +1,76 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <br />
+        <table class="table">
+            <tr>
+                <th>
+                    Turista
+                </th>
+                <th>
+                    Aranzman (naziv, datum, poster)
+                </th>
+                <th>
+                </th>
+                <th>
+                    Komentar
+                </th>
+                <th>
+                    Ocena
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+            </tr>
+            @foreach (var k in ViewBag.Komentari)
+            {
+                <tr>
+                    <td>
+                        @k.Turista.KorisnickoIme
+                    </td>
+                    <td>
+                        @k.Aranzman.Naziv<br />
+                        @k.Aranzman.DatumZavrsetkaPutovanja.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        <img src="~/Photos/@k.Aranzman.Poster.Name" height="85" width="140" />
+                    </td>
+                    <td>
+                        @k.TekstKomentara
+                    </td>
+                    <td>
+                        @k.Ocena
+                    </td>
+                    <td>
+                        <form action="/MenadzerFun/OdobriKoment" method="post">
+                            <input type="submit" value="Odobri" />
+                            <input type="text" name="komentara_id" value="@k.Id" hidden />
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/MenadzerFun/OdbijKoment" method="post">
+                            <input type="submit" value="Odbij" />
+                            <input type="text" name="komentara_id" value="@k.Id" hidden />
+                        </form>
+
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
+        <a href="~/Korisnici/Menadzer">Nazad</a>
+    </div>
+</body>
+</html>

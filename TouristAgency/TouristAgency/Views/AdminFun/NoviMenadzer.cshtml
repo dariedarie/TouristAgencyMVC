@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+
+<body>
+    <form action="~/AdminFun/RegMenadzera" method="post">
+        <div>
+            @ViewBag.Message
+        </div>
+        <h1>Registracija menadzera</h1><br />
+        <label for="korisnickoIme">Korisnicko ime</label><br />
+        <input type="text" name="korisnickoIme" /><br />
+
+        <label for="lozinka">Lozinka</label><br />
+        <input type="password" name="lozinka" /><br />
+
+        <label for="ime"> Ime</label><br />
+        <input type="text" name="ime" /><br />
+
+        <label for="prezime">Prezime</label><br />
+        <input type="text" name="prezime" /><br />
+
+        <label for="email">Email</label><br />
+        <input type="text" name="email" /><br />
+
+        <label for="datumRodjenja">Datum rodjenja</label><br />
+        <input type="date" data-date-format="DD MMMM YYYY" name="datumRodjenja" max="@DateTime.Now" /><br />
+
+        <input type="hidden" name="uloga" value="MENADZER" />
+
+        <label for="pol">Pol korisnika</label><br />
+        <input list="polovi" name="pol" />
+        <datalist id="polovi">
+            <option>M</option>
+            <option>F</option>
+        </datalist>
+        <br />
+
+        <input type="hidden" name="obrisan" value="false" />
+
+        <input type="submit" value="NoviMenadzer" />
+
+    </form>
+    <br />
+    <form action="~/Korisnici/Admin" method="post">
+        <input type="submit" value="Nazad" />
+    </form>
+
+</body>
+</html>

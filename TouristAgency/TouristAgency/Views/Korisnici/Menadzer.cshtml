@@ -1,0 +1,80 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Moj profil:</h2>
+
+<table class="table-condensed">
+    <tr>
+        <td>Korisnicko ime:</td>
+        <td>
+            @ViewBag.Menadzer.KorisnickoIme
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Ime:
+        </td>
+        <td>
+            @ViewBag.Menadzer.Ime
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Prezime:
+        </td>
+        <td>
+            @ViewBag.Menadzer.Prezime
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Lozinka:
+        </td>
+        <td>
+            @ViewBag.Menadzer.Lozinka
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Pol:
+        </td>
+        <td>
+            @ViewBag.Menadzer.Pol
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Email:
+        </td>
+        <td>
+            @ViewBag.Menadzer.Email
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Datum rodjenja:
+        </td>
+        <td>
+            @ViewBag.Menadzer.DatumRodjenja.ToString("MM/dd/yyyy")
+        </td>
+    </tr>
+</table>
+<br />
+<form action="/Korisnici/IzmenaMenadzera">
+    <input type="text" name="korisnickoIme" value="@ViewBag.Menadzer.KorisnickoIme" hidden />
+    <input type="submit" value="Izmeni profil" />
+</form>
+<br />
+<form action="~/Korisnici/MenadzerAranzman" method="post">
+    <input type="submit" value="Aranzmani" />
+</form>
+<br />
+<form action="~/Korisnici/MenadzerSmestaj" method="post">
+    <input type="submit" value="Smestaji" />
+</form>
+<br />
+<form action="~/Korisnici/MenadzerKoment" method="post">
+    <input type="submit" value="Odobravanje/odbijanje komentara" />
+</form>
+

@@ -1,0 +1,149 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <h2>Pregled svih mojih rezervacija</h2>
+    <table class="table">
+        <tr>
+            <th>
+                Identifikator rezervacije
+            </th>
+            <th>
+                Status rezervacije
+            </th>
+            <th>
+                Naziv aranzmana
+            </th>
+            <th>
+                Tip aranzmana
+            </th>
+            <th>
+                Datum početka putovanja
+            </th>
+            <th>
+                Datum završetka putovanja
+            </th>
+            <th>
+                Poster
+            </th>
+        </tr>
+        @foreach (var k in ViewBag.rez)
+        {
+            <tr>
+                <td>
+                    @k.Id
+                </td>
+                <td>
+                    @k.Status.ToString()
+                </td>
+                <td>
+                    @k.Aranzman.Naziv
+                </td>
+                <td>
+                    @k.Aranzman.TipAranzmana.ToString()
+                </td>
+                <td>
+                    @k.Aranzman.DatumPocetkaPutovanja.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @k.Aranzman.DatumZavrsetkaPutovanja.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    <img src="~/Photos/@k.Aranzman.Poster.Name" height="85" width="140" />
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+    <form action="~/TuristaFun/SortirajIdUp">
+        <input type="submit" value="Sort id UP" />
+    </form>
+    <br />
+    <form action="~/TuristaFun/SortirajIdDown">
+        <input type="submit" value="Sort id DOWN" />
+    </form>
+    <br />
+    <form action="~/TuristaFun/SortirajNazivUp">
+        <input type="submit" value="Sort naziv UP" />
+    </form>
+    <br />
+    <form action="~/TuristaFun/SortirajNazivDown">
+        <input type="submit" value="Sort naziv DOWN" />
+    </form>
+    <br />
+    <form action="~/TuristaFun/SortirajDatumPUp">
+        <input type="submit" value="Sort datum pocetak UP" />
+    </form>
+    <br />
+    <form action="~/TuristaFun/SortirajDatumPDown">
+        <input type="submit" value="Sort datum pocetak DOWN" />
+    </form>
+    <br />
+    <form action="~/TuristaFun/SortirajDatumZUp">
+        <input type="submit" value="Sort datum zavrsetak UP" />
+    </form>
+    <br />
+    <form action="~/TuristaFun/SortirajDatumZDown">
+        <input type="submit" value="Sort datum zavrsetak DOWN" />
+    </form>
+    <br />
+    <h4>Pretraga rezervacije:</h4>
+    <form action="/TuristaFun/Pretraga">
+        @{
+            <div style="color : red">
+                @ViewBag.Message
+            </div>
+        }
+        <label>Pretraga po datumu pocetka:</label>
+        <label>Donja granica:</label>
+        <input type="date" name="donjagranicaP" />
+        <label>Gornja granica:</label>
+        <input type="date" name="gornjagranicaP" />
+        <br />
+        <label>Pretraga po datumu zavrsetka:</label>
+        <label>Donja granica:</label>
+        <input type="date" name="donjagranicaZ" />
+        <label>Gornja granica:</label>
+        <input type="date" name="gornjagranicaZ" />
+        <br />
+        <label>Pretraga po tipu aranzmana :</label>
+        <select name="tipAranzmana">
+            <option value=""></option>
+            <option value="NOCENJESADORUCKOM">NOCENJESADORUCKOM</option>
+            <option value="POLUPANSION">POLUPANSION</option>
+            <option value="PUNPANSION">PUNPANSION</option>
+            <option value="ALLINCLUSIVE">ALLINCLUSIVE</option>
+            <option value="NAJAMAPART">NAJAMAPART</option>
+        </select>
+        <br />
+        <label>Pretraga po statusu :</label>
+        <select name="status">
+            <option value=""></option>
+            <option value="AKTIVNA">AKTIVNA</option>
+            <option value="OTKAZANA">OTKAZANA</option>
+        </select>
+        <br />
+        <label>Pretraga po nazivu:</label>
+        <input type="text" name="naziv" />
+        <br />
+        @*<label>Pretraga po id-u:</label>
+        <input type="text" name="id" />*@
+        <br />
+        <input type="submit" value="Pretrazi" />
+    </form>
+    <br />
+    <h5>Prikazi opet celu stranicu:</h5>
+    <form action="/TuristaFun/PregledRezervacija">
+        <input type="submit" value="Prikazi opet" />
+    </form>
+    <br />
+    <a href="~/Korisnici/Turista">Nazad</a>
+</body>
+</html>

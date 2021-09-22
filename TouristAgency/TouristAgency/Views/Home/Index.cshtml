@@ -1,0 +1,133 @@
+﻿
+<h3>Svi aranzmani:</h3>
+<table class="table">
+    <tr>
+        <th>
+            Naziv
+        </th>
+        <th>
+            Prevoz
+        </th>
+        <th>
+            Polazak
+        </th>
+        <th>
+            Povratak
+        </th>
+        <th>
+            Poster
+        </th>
+        <th>
+            Tip aranzmana
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    @foreach (var a in ViewBag.aranzmani)
+    {
+        <tr>
+            <td>
+                @a.Naziv
+            </td>
+            <td>
+                @a.TipPrevoza
+            </td>
+            <td>
+                @a.DatumPocetkaPutovanja.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @a.DatumZavrsetkaPutovanja.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                <img src="~/Photos/@a.Poster.Name" height="85" width="100" />
+            </td>
+            <td>
+                @a.TipAranzmana
+            </td>
+            <td>
+                <form action="/Home/About" method="post">
+                    <input type="text" name="id" value="@a.Id" hidden />
+                    <input type="submit" value="Info" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<form action="~/Home/SortirajNazivUp">
+    <input type="submit" value="Sort naziv UP" />
+</form>
+<br />
+<form action="~/Home/SortirajNazivDown">
+    <input type="submit" value="Sort naziv DOWN" />
+</form>
+<br />
+<form action="~/Home/SortirajDatumPUp">
+    <input type="submit" value="Sort datum pocetak UP" />
+</form>
+<br />
+<form action="~/Home/SortirajDatumPDown">
+    <input type="submit" value="Sort datum pocetak DOWN" />
+</form>
+<br />
+<form action="~/Home/SortirajDatumZUp">
+    <input type="submit" value="Sort datum zavrsetak UP" />
+</form>
+<br />
+<form action="~/Home/SortirajDatumZDown">
+    <input type="submit" value="Sort datum zavrsetak DOWN" />
+</form>
+<br />
+<h4>Pretraga aranzmana:</h4>
+<form action="/Home/Pretraga">
+    @{
+        <div style="color : red">
+            @ViewBag.Message
+        </div>
+    }
+    <label>Pretraga po datumu pocetka:</label>
+    <label>Donja granica:</label>
+    <input type="date" name="donjagranicaP" />
+    <label>Gornja granica:</label>
+    <input type="date" name="gornjagranicaP" />
+    <br />
+    <label>Pretraga po datumu zavrsetka:</label>
+    <label>Donja granica:</label>
+    <input type="date" name="donjagranicaZ" />
+    <label>Gornja granica:</label>
+    <input type="date" name="gornjagranicaZ" />
+    <br />
+    <label>Pretraga po tipu prevoza :</label>
+    <select name="tipPrevoza">
+        <option value=""></option>
+        <option value="AUTOBUS">AUTOBUS</option>
+        <option value="AVION">AVION</option>
+        <option value="BUSAVION">BUSAVION</option>
+        <option value="OSTALO">OSTALO</option>
+        <option value="INDIVUALAN">INDIVUALAN</option>
+    </select>
+    <br />
+    <label>Pretraga po tipu aranzmana :</label>
+    <select name="tipAranzmana">
+        <option value=""></option>
+        <option value="NOCENJESADORUCKOM">NOCENJESADORUCKOM</option>
+        <option value="POLUPANSION">POLUPANSION</option>
+        <option value="PUNPANSION">PUNPANSION</option>
+        <option value="ALLINCLUSIVE">ALLINCLUSIVE</option>
+        <option value="NAJAMAPART">NAJAMAPART</option>
+    </select>
+    <br />
+    <label>Pretraga po nazivu:</label>
+    <input type="text" name="naziv" />
+    <br />
+    <input type="submit" value="Pretrazi" />
+
+</form>
+<br />
+<h5>Prikazi opet celu stranicu:</h5>
+<form action="/Home/Index">
+    <input type="submit" value="Prikazi opet" />
+</form>
+<br />
+<a href="~/ProsliAranzmani/Index">Predji na stranicu proslih aranzmana</a>

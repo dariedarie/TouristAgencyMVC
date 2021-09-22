@@ -1,0 +1,147 @@
+﻿@{    
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Svi korisnici:</h3>
+<p><i>Imate mogucnost da blokirate turiste koji su 2 ili vise puta otkazali rezervaciju.</i></p>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            Korisnicko ime
+        </th>
+        <th>
+            Lozinka
+        </th>
+        <th>
+            Ime
+        </th>
+        <th>
+            Prezime
+        </th>
+        <th>
+            Pol
+        </th>
+        <th>
+            Datum rodjenja
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Uloga
+        </th>
+        <th>
+            Blokiran
+        </th>
+        <th>
+            Broj otkaza rezervacije
+        </th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var k in ViewBag.Korisnici)
+    {
+    <tr>
+        <td>
+            @k.KorisnickoIme
+        </td>
+        <td>
+            @k.Lozinka
+        </td>
+        <td>
+            @k.Ime
+        </td>
+        <td>
+            @k.Prezime
+        </td>
+        <td>
+            @k.Pol.ToString()
+        </td>
+        <td>
+            @k.DatumRodjenja.ToString("dd/MM/yyyy")
+        </td>
+        <td>
+            @k.Email
+        </td>
+        <td>
+            @k.Uloga.ToString()
+        </td>
+        @if (k.Blokiran == false)
+        {
+            <td>
+                NE
+            </td>
+
+        }
+        else
+        {
+            <td>
+                DA
+            </td>
+        }
+        <td>
+            @k.OtkazRez
+        </td>
+        <td>
+            @if (k.Uloga.ToString().Equals("TURISTA") && k.OtkazRez>=2)
+            {
+                <form action="/AdminFun/BlokirajTuristu">
+                    <input type="text" name="korisnickoIme" value="@k.KorisnickoIme" hidden />
+                    <input type="submit" value="Blokiraj" />
+                </form>
+            }
+        </td>
+    </tr>
+    }
+</table>
+<br />
+<form action="~/Korisnici/Admin" method="post">
+    <input type="submit" value="Nazad" />
+</form>
+<br />
+<h3>Pretraga svih korisnika:</h3>
+<form action="/AdminFun/Pretraga">
+    @{
+        <div style="color : red">
+            @ViewBag.Message
+        </div>
+    }
+    <label>Pretraga po imenu:</label>
+    <input type="text" name="pIme" />
+    <label>Pretraga po prezimenu :</label>
+    <input type="text" name="pPrezime" />
+    <label>Pretraga po ulozi :</label>
+    <select name="uloga">
+        <option value=""></option>
+        <option value="ADMINISTRATOR">ADMINISTRATOR</option>
+        <option value="MENADZER">MENADZER</option>
+        <option value="TURISTA">TURISTA</option>
+    </select>
+    <input type="submit" value="Pretrazi" />
+</form>
+<br />
+<form action="~/AdminFun/SortImeUp">
+    <input type="submit" value="Sortiraj po imenu(rastuce)" />
+</form>
+<form action="~/AdminFun/SortImeDown">
+    <input type="submit" value="Sortiraj po imenu(opadajuce)" />
+</form>
+<form action="~/AdminFun/SortPrezimeUp">
+    <input type="submit" value="Sortiraj po prezimenu(rastuce)" />
+</form>
+<form action="~/AdminFun/SortPrezimeDown">
+    <input type="submit" value="Sortiraj po prezimenu(opadajuce)" />
+</form>
+<form action="~/AdminFun/SortUlogaUp">
+    <input type="submit" value="Sortiraj po ulozi(rastuce)" />
+</form>
+<form action="~/AdminFun/SortUlogaDown">
+    <input type="submit" value="Sortiraj po ulozi(opadajuce)" />
+</form>
+<br />
+<h4>Prikazi opet sve korisnike:</h4>
+<form action="/AdminFun/SviKorisnici">
+    <input type="submit" value="Svi korisnici" />
+</form>

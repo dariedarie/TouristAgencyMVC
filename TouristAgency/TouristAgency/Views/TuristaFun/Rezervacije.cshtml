@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <h3>Svi aranzmani za rezervisanje:</h3>
+    <table class="table">
+        <tr>
+            <th>
+                Naziv
+            </th>
+            <th>
+                Prevoz
+            </th>
+            <th>
+                Polazak
+            </th>
+            <th>
+                Povratak
+            </th>
+            <th>
+                Poster
+            </th>
+            <th>
+                Tip aranzmana
+            </th>
+            <th>
+
+            </th>
+        </tr>
+        @foreach (var a in ViewBag.aranzmani)
+        {
+            <tr>
+                <td>
+                    @a.Naziv
+                </td>
+                <td>
+                    @a.TipPrevoza
+                </td>
+                <td>
+                    @a.DatumPocetkaPutovanja.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @a.DatumZavrsetkaPutovanja.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    <img src="~/Photos/@a.Poster.Name" height="85" width="100" />
+                </td>
+                <td>
+                    @a.TipAranzmana
+                </td>
+                <td>
+                    <form action="/TuristaFun/Rezervisi" method="post">
+                        <input type="text" name="id" value="@a.Id" hidden />
+                        <input type="submit" value="Rezervisi" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+    <a href="~/TuristaFun/PregledRezervacija">Pregled rezervacija</a>
+    <br />
+    <a href="~/Korisnici/Turista">Nazad</a>
+
+</body>
+</html>

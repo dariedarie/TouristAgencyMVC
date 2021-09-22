@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <h2>Pregled svih mojih rezervacija za otkazivanje:</h2>
+    <table class="table">
+        <tr>
+            <th>
+                Identifikator rezervacije
+            </th>
+            <th>
+                Status rezervacije
+            </th>
+            <th>
+                Naziv aranzmana
+            </th>
+            <th>
+                Tip aranzmana
+            </th>
+            <th>
+                Datum početka putovanja
+            </th>
+            <th>
+                Datum završetka putovanja
+            </th>
+            <th>
+                Poster
+            </th>
+            <th>
+
+            </th>
+        </tr>
+        @foreach (var k in ViewBag.rez)
+        {
+            <tr>
+                <td>
+                    @k.Id
+                </td>
+                <td>
+                    @k.Status.ToString()
+                </td>
+                <td>
+                    @k.Aranzman.Naziv
+                </td>
+                <td>
+                    @k.Aranzman.TipAranzmana.ToString()
+                </td>
+                <td>
+                    @k.Aranzman.DatumPocetkaPutovanja.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @k.Aranzman.DatumZavrsetkaPutovanja.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    <img src="~/Photos/@k.Aranzman.Poster.Name" height="85" width="140" />
+                </td>
+                <td>
+                    <form action="/TuristaFun/Otkazi" method="post">
+                        <input type="text" name="id_rez" value="@k.Id" hidden />
+                        <input type="submit" value="Otkazi" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <br />
+    <a href="~/Korisnici/Turista">Nazad</a>
+</body>
+</html>

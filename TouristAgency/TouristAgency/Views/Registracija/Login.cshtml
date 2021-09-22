@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        @ViewBag.Message
+    </div>
+    <h2>LOGOVANJE</h2>
+
+    <form action="~/Registracija/LogovanjeKorsnika" method="post">
+        <label for="korisnickoIme"><b><i></i>Korisnicko ime</b></label><br />
+        <input type="text" name="korisnickoIme" /><br />
+        <label for="lozinka"><b><i></i>Lozinka</b></label><br />
+        <input type="password" name="lozinka" /><br />
+        <input type="submit" value="Prijava" />
+
+    </form>
+
+</body>
+</html>

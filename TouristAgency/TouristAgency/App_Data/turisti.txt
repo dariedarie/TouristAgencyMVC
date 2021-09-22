@@ -1,0 +1,4 @@
+dariecolak|dariee|colak|dariecolak98|M|darie@gmail.com|10/12/1998|TURISTA|True|2
+dadasd|dasdasdas|dadas|dasdasdas|M|dasdads|31/08/2021|TURISTA|False|1
+turista123|Turista|Turistic|turista123|M|turista@gmail.com|14/06/2000|TURISTA|False|5
+test|test|testni|test123|F|test@gmail.com|17/02/2020|TURISTA|False|0

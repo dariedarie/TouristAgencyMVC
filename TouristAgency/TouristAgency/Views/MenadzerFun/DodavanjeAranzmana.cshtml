@@ -1,0 +1,158 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kreiranje aranzmana:</h2>
+<div style="color : red">
+    @ViewBag.Message
+</div>
+<form action="/MenadzerFun/DodajNoviA" method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>
+                Naziv:
+            </td>
+            <td>
+                <input type="text" name="naziv" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Tip aranzmana:
+            </td>
+            <td>
+                <select name="tipAranzmana">
+                    <option value=""></option>
+                    <option value="NOCENJESADORUCKOM">NOCENJESADORUCKOM</option>
+                    <option value="POLUPANSION">POLUPANSION</option>
+                    <option value="PUNPANSION">PUNPANSION</option>
+                    <option value="ALLINCLUSIVE">ALLINCLUSIVE</option>
+                    <option value="NAJAMAPART">NAJAMAPART</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Tip prevoza:
+            </td>
+            <td>
+                <select name="tipPrevoza">
+                    <option value=""></option>
+                    <option value="AUTOBUS">AUTOBUS</option>
+                    <option value="AVION">AVION</option>
+                    <option value="BUSAVION">BUSAVION</option>
+                    <option value="OSTALO">OSTALO</option>
+                    <option value="INDIVUALAN">INDIVUALAN</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Lokacija:
+            </td>
+            <td>
+                <input type="text" name="lokacija" />
+            </td>
+        </tr>
+        <tr>
+            <td>Datum pocetka putovanja:</td>
+            <td>
+                <input type="date" data-date-format="DD MMMM YYYY" name="datumPocetkaPutovanja" max="@DateTime.Now" /><br />
+            </td>
+        </tr>
+        <tr>
+            <td>Datum zavrsetka putovanja:</td>
+            <td>
+                <input type="date" data-date-format="DD MMMM YYYY" name="datumZavrsetkaPutovanja" max="@DateTime.Now" /><br />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Mesto nalazenja adresa:<br />(uneti u formatu: adresa, grad, postanski broj)
+            </td>
+            <td>
+                <input type="text" name="adresa" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Geografska sirina:<br />
+            </td>
+            <td>
+                <input type="text" name="gsirina" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Geografksa duzina:<br />
+            </td>
+            <td>
+                <input type="text" name="gduzina" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Vreme nalazenja:
+            </td>
+            <td>
+                <input type="time" name="vremeNalazenja" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Max broj putnika:
+            </td>
+            <td>
+                <input type="number" name="brputnika" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Opis:<br />
+            </td>
+            <td>
+                <input type="text" name="opis" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Program:<br />
+            </td>
+            <td>
+                <input type="text" name="program" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Poster:
+            </td>
+            <td>
+                <input type="file" name="poster" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Smestaj:
+            </td>
+            <td>
+               
+                <select name="smestaj">
+                    <option value=""></option>
+                    @foreach (var s in ViewBag.Smestaj)
+                    {
+                        <option value="@s.Id">@s.Naziv</option>
+                    }
+                </select>
+                
+                </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <br />
+                <input type="submit" value="Dodaj" />
+            </td>
+        </tr>
+    </table>
+</form>
+<br />
+<a href="~/MenadzerFun/Aranzmani">Nazad</a>

@@ -1,0 +1,90 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <form action="~/MenadzerFun/DodajNoviS" method="post">
+            <div>
+                @ViewBag.Message
+            </div>
+            <h1>Kreiranje smestaja</h1><br />
+
+            <label for="naziv">Naziv:</label><br />
+            <input type="text" name="naziv" /><br />
+
+            <label for="brojZvezdica">Broj zvezdica</label><br />
+            <input type="number" name="brojZvezdica" /><br />
+
+            <label>Tip smestaja:</label>
+            <select name="tipSmestaja">
+                <option value=""></option>
+                <option value="HOTEL">HOTEL</option>
+                <option value="MOTEL">MOTEL</option>
+                <option value="VILA">VILA</option>
+            </select>
+            <br />
+
+            <label>BAZEN:</label>
+            <select name="bazen">
+                <option value=""></option>
+                <option value="true">DA</option>
+                <option value="false">NE</option>
+            </select>
+            <br />
+
+            <label>SPA CENTAR:</label>
+            <select name="spaCentar">
+                <option value=""></option>
+                <option value="true">DA</option>
+                <option value="false">NE</option>
+            </select>
+            <br />
+
+            <label>Za osobe sa invaliditetom:</label>
+            <select name="saInv">
+                <option value=""></option>
+                <option value="true">DA</option>
+                <option value="false">NE</option>
+            </select>
+            <br />
+
+            <label>WI FI:</label>
+            <select name="wiFi">
+                <option value=""></option>
+                <option value="true">DA</option>
+                <option value="false">NE</option>
+            </select>
+            <br />
+            <h3>Kreiranje smestajne jedinice</h3><br />
+            <label for="dozvoljenoGostiju">Dozvoljeno gostiju</label><br />
+            <input type="number" name="dozvoljenoGostiju" /><br />
+
+            <label>Dozvoljeni boravak kucnih ljubimaca:</label>
+            <select name="kucniLjubimci">
+                <option value=""></option>
+                <option value="true">DA</option>
+                <option value="false">NE</option>
+            </select>
+            <br />
+
+            <label for="cena">Cena za celu smestajnu jedinicu</label><br />
+            <input type="text" name="cena" /><br />
+
+
+
+            <input type="submit" value="Dodaj" />
+
+        </form>
+        <br />
+        <a href="~/MenadzerFun/Smestaji">Nazad</a>
+    </div>
+</body>
+</html>

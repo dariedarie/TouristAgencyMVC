@@ -1,0 +1,1 @@
+admin|Admin|Adminovic|admin|M|admin@hotmail.comm|12/08/1996|ADMINISTRATOR|False|0

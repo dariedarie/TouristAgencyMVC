@@ -1,0 +1,5 @@
+0|MOTEL|Palisad|5|True|False|False|True|False
+1|MOTEL|Grand|5|True|True|True|False|False
+2|VILA|eeeee|2|True|True|False|True|False
+3|MOTEL|Test|3|False|True|False|True|True
+4|HOTEL|Test|3|True|True|False|False|True

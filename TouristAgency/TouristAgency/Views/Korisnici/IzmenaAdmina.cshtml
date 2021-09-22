@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <form action="~/Korisnici/IzmeniAdmina" method="post">
+        <div>
+            @ViewBag.Message
+        </div>
+
+
+
+        <h1>Izmena profila:</h1><br />
+
+        <input type="hidden" name="korisnickoIme" value="@ViewBag.Admin.KorisnickoIme" /><br />
+
+        <label for="ime">Ime:</label><br />
+        <input type="text" name="ime" value="@ViewBag.Admin.Ime" /><br />
+
+        <label for="prezime">Prezime:</label><br />
+        <input type="text" name="prezime" value="@ViewBag.Admin.Prezime" /><br />
+
+        <label for="lozinka">Lozinka:</label><br />
+        <input type="text" name="lozinka" value="@ViewBag.Admin.Lozinka" /><br />
+
+        <label for="pol">Pol:</label><br />
+        @if (ViewBag.Admin.Pol.ToString().Equals("M"))
+        {
+            <input type="radio" name="pol" value="M" checked> <label>MALE</label><br>
+            <input type="radio" name="pol" value="F"> <label>FEMALE</label><br>
+        }
+        else
+        {
+            <input type="radio" name="pol" value="M"> <label>MALE</label><br>
+            <input type="radio" name="pol" value="F" checked> <label>FEMALE</label><br>
+        }
+
+        <label for="email">Email:</label><br />
+        <input type="text" name="email" value="@ViewBag.Admin.Email" /><br />
+
+        <label for="datumRodjenja">Datum rodjenja:</label><br />
+        <input type="date" name="datumRodjenja" max="@DateTime.Now" value="@ViewBag.Admin.DatumRodjenja.ToString("dd/MM/yyyy")"><br />
+
+        <input type="submit" value="Izmeni" />
+
+    </form>
+    <br />
+    <a href="~/Korisnici/Admin">Nazad</a>
+
+</body>
+</html>
